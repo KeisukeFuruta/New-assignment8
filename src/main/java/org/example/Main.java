@@ -15,12 +15,18 @@ public class Main {
           + "江波さん最高！" + "Javaコース勉強頑張る", StandardOpenOption.APPEND);
       System.out.println(Files.readString(path));
       //e.printStackTrace(); //例外の処理をコンソール上に表示させる
-    } catch (IOException e) {
+    } catch (IOException e1) {
       System.out.println("例外が発生しました、該当ファイルがあるか確認してください。");
-      Path path = Path.of("JavaCourse.txt");
-      Files.writeString(path, "Javaコース楽しい！" + " "
-          + "江波さん最高！" + "Javaコース勉強頑張る", StandardOpenOption.APPEND);
-      System.out.println(Files.readString(path));
+      try {
+        Path path = Path.of("JavaCourse.txt");
+        Files.writeString(path, "Javaコース楽しい！" + " "
+            + "江波さん最高！" + "Javaコース勉強頑張る", StandardOpenOption.APPEND);
+        System.out.println(Files.readString(path));
+        //e.printStackTrace(); //例外の処理をコンソール上に表示させる
+      } catch (IOException e2) {
+        System.out.println("もう一度例外が発生しました、該当ファイルがあるか確認してください。");
+
+      }
     }
     //
     //課題　入出力を実際に実装して、作ったファイルに文章を追加する。
